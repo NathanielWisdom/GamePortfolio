@@ -1,0 +1,31 @@
+body {
+    margin: 0; /* Remove default body margin */
+    overflow: hidden; /* Prevents scrollbars if the div goes off-screen */
+    background-color: #ffffff; /* Light gray background */
+}
+
+#player {
+    width: 50px; /* How wide your moving square is */
+    height: 50px; /* How tall your moving square is */
+    background-color: dodgerblue; /* Makes the square blue so you can see it */
+    
+    /* VERY IMPORTANT: This allows you to control its exact position using top/left */
+    position: absolute; 
+    
+    top: 50px;   /* Starting position from the top of the page */
+    left: 50px;  /* Starting position from the left of the page */
+
+    /* Optional: Makes the movement smoother instead of just jumping */
+    transition: top 0.05s linear, left 0.05s linear;
+}
+
+#project {
+    width: 100px;
+    height: 100px;
+    background-color: yellow;
+
+    position: absolute;
+
+    top: 60px;
+    left: 1400px;
+}
