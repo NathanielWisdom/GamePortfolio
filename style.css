@@ -5,7 +5,7 @@ body {
 }
 
 #player {
-    width: 50px; /* How wide your moving square is */
+    width: 25px; /* How wide your moving square is */
     height: 50px; /* How tall your moving square is */
     background-color: dodgerblue; /* Makes the square blue so you can see it */
     
@@ -28,4 +28,16 @@ body {
 
     top: 60px;
     left: 1400px;
+}
+
+#wall1 {
+    width: 30px; 
+    height: 200px;
+    background-color: gray;
+    position: absolute;
+}
+
+#project-game {
+    position: 'absolute';
+
 }
