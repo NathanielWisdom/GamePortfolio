@@ -15,6 +15,8 @@ function initiate(){
     console.log(gameObjects)
 
     playerDiv = document.getElementById('player')
+    playerDiv.style.backgroundImage = "url('assets/Player/Walk Down.png')";
+    playerDiv.style.backgroundSize = '50px 70px'
 
 
     
@@ -25,6 +27,22 @@ function initiate(){
 //
 function gameloop(){
     let [dx, dy] = movePlayer(keymap)
+
+    
+    if (Math.abs(dx) > Math.abs(dy)){
+        if (dx > 0){
+            playerDiv.style.backgroundImage = "url('assets/Player/Walk Right.png')";
+        } else if (dx < 0){
+            playerDiv.style.backgroundImage = "url('assets/Player/Walk Left.png')";
+        }
+    } else {
+        if (dy > 0){
+            playerDiv.style.backgroundImage = "url('assets/Player/Walk Down.png')";
+        } else if (dy < 0) {
+            playerDiv.style.backgroundImage = "url('assets/Player/Walk Up.png')";
+        }
+
+    }
     
     playerX += dx;
     playerY += dy;
