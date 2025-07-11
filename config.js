@@ -5,8 +5,8 @@ export const projects = [
         description: 'A speedrunning game created using P5.js',
         link: 'https://editor.p5js.org/nathanielwisdom/sketches/bSg0ro_BV',
         image: 'assets/StatueImg.png',
-        x: 1000,
-        y: 100,
+        x: window.innerWidth * 0.2,   // 52.1% of screen width
+        y: window.innerHeight * 0.2,  // 9.3% of screen height
         width: 100,
         height: 100
     },
@@ -16,8 +16,8 @@ export const projects = [
         description: 'A canvas with 3 brushes, a color picker, and stroke size adjustment',
         link: 'https://editor.p5js.org/nathanielwisdom/full/P7ZXR6W7m',
         image: 'assets/StatueImg.png',
-        x: 1300,
-        y: 200,
+        x: window.innerWidth * 0.677,   // 67.7% of screen width
+        y: window.innerHeight * 0.185,  // 18.5% of screen height
         width: 100,
         height: 100
     },
@@ -27,8 +27,8 @@ export const projects = [
         description: 'Centralized laundry intelligence app for Pomona College laundry',
         link: '',
         image: 'assets/StatueImg.png',
-        x: 1100,
-        y: 250,
+        x: window.innerWidth * 0.80,   // 57.3% of screen width
+        y: window.innerHeight * 0.81,  // 23.1% of screen height
         width: 100,
         height: 100
     }

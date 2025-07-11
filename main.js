@@ -2,8 +2,8 @@ import { projects, contacts, skills } from "./config.js";
 import { movePlayer } from "./gameLogics/player.js";
 import { isColliding } from "./gameLogics/collision.js";
 
-let playerX = 100;
-let playerY = 100;
+let playerX = window.innerWidth/2;
+let playerY = window.innerHeight/2;
 const keymap = {};
 let gameObjects = [];
 let playerDiv;
@@ -63,7 +63,7 @@ function gameloop(){
         const box = document.createElement('div');
         box.id = 'collisionBox';
         box.innerHTML = collidingProject.title + ": " + collidingProject.description;
-        box.style.cssText = `position: absolute; left: ${playerObj.left}px; top: ${playerObj.top - 50}px; background: red; color: white; padding: 10px; border: 2px solid black; z-index: 1000;`;
+        box.style.cssText = `position: absolute; left: ${playerObj.left}px; top: ${playerObj.top - 50}px; background: white; color: black; padding: 10px; border: 2px solid black; z-index: 1000; text-wrap: wrap; width: 150px`;
         document.body.appendChild(box);
     }
 
