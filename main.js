@@ -47,6 +47,15 @@ function gameloop(){
         }
 
     }
+
+    if(playerX + dx > window.innerWidth || playerX + dx < 0){
+        dx = 0
+    }
+
+    if(playerY + dy > window.innerHeight || playerY + dy < 0){
+        dy = 0
+    }
+
     
     playerX += dx;
     playerY += dy;
@@ -94,11 +103,13 @@ document.addEventListener('keyup', handleKeyRelease)
 
 function collidingWithPlayer(gameObject){
     let object = {
-        top: gameObject.y,
-        left: gameObject.x,
+        top: gameObject.y * window.innerHeight ,
+        left: gameObject.x * window.innerWidth,
         width: gameObject.width,
         height: gameObject.height
     }
+
+    
     let playerObj = playerDiv.getBoundingClientRect();
     return isColliding(playerObj, object)
 }
@@ -109,8 +120,8 @@ function createProject(project){
     div.style.position = 'absolute';
     div.style.width = `${project.width}px`;
     div.style.height = `${project.height}px`;
-    div.style.top = `${project.y}px`;
-    div.style.left = `${project.x}px`;
+    div.style.top = `${project.y * window.innerHeight}px`;
+    div.style.left = `${project.x * window.innerWidth}px`;
     
     const img = document.createElement('img');
     img.src = project.image;
