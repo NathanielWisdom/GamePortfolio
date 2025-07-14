@@ -1,6 +1,8 @@
-import { projects, contacts, skills } from "./config.js";
+import { projects } from "./config.js";
 import { movePlayer } from "./gameLogics/player.js";
 import { isColliding } from "./gameLogics/collision.js";
+
+console.log('Projects loaded:', projects);
 
 let playerX = window.innerWidth/2;
 let playerY = window.innerHeight/2;
@@ -17,6 +19,8 @@ function initiate(){
     playerDiv = document.getElementById('player')
     playerDiv.style.backgroundImage = "url('assets/Player/Walk Down.png')";
     playerDiv.style.backgroundSize = '50px 70px'
+
+    
 
 
     

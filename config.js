@@ -25,19 +25,23 @@ export const projects = [
         id: 'laundry-app',
         title: 'Pomona Laundry App',
         description: 'Centralized laundry intelligence app for Pomona College laundry',
-        link: '',
+        link: 'https://github.com/bgizaw/laundry-app-react-native',
         image: 'assets/StatueImg.png',
         x: window.innerWidth * 0.80,   // 57.3% of screen width
         y: window.innerHeight * 0.81,  // 23.1% of screen height
         width: 100,
         height: 100
+    },
+    {
+        id: 'resume',
+        title: 'Master Resume',
+        description: 'Live Link to my consistently updated master resume',
+        link: 'https://docs.google.com/document/d/1CMZXSwNGHI7rJfJBr1GsKPOzQclv-gMF/edit?usp=sharing&ouid=109188050300561817816&rtpof=true&sd=true',
+        image: 'assets/StatueImg.png',
+        x: window.innerWidth * 0.5,   // 50% of screen width
+        y: window.innerHeight * 0.6,  // 50% of screen height
+        width: 100,
+        height: 100
     }
+    
 ];
-
-export const skills = ['Python', 'JavaScript', 'CSS', 'HTML',
-
-]
-
-export const contacts = [
-
-]
