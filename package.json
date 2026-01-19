@@ -1,0 +1,12 @@
+{
+  "name": "gameportfolio",
+  "version": "1.0.0",
+  "description": "Game Portfolio",
+  "main": "main.js",
+  "scripts": {
+    "start": "npx http-server -p 8080 -o"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

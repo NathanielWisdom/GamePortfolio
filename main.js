@@ -1,9 +1,11 @@
-import { projects, contacts, skills } from "./config.js";
+import { projects } from "./config.js";
 import { movePlayer } from "./gameLogics/player.js";
 import { isColliding } from "./gameLogics/collision.js";
 
-let playerX = 100;
-let playerY = 100;
+console.log('Projects loaded:', projects);
+
+let playerX = window.innerWidth/2;
+let playerY = window.innerHeight/2;
 const keymap = {};
 let gameObjects = [];
 let playerDiv;
@@ -15,6 +17,10 @@ function initiate(){
     console.log(gameObjects)
 
     playerDiv = document.getElementById('player')
+    playerDiv.style.backgroundImage = "url('assets/Player/Walk Down.png')";
+    playerDiv.style.backgroundSize = '50px 70px'
+
+    
 
 
     
@@ -25,6 +31,31 @@ function initiate(){
 //
 function gameloop(){
     let [dx, dy] = movePlayer(keymap)
+
+    
+    if (Math.abs(dx) > Math.abs(dy)){
+        if (dx > 0){
+            playerDiv.style.backgroundImage = "url('assets/Player/Walk Right.png')";
+        } else if (dx < 0){
+            playerDiv.style.backgroundImage = "url('assets/Player/Walk Left.png')";
+        }
+    } else {
+        if (dy > 0){
+            playerDiv.style.backgroundImage = "url('assets/Player/Walk Down.png')";
+        } else if (dy < 0) {
+            playerDiv.style.backgroundImage = "url('assets/Player/Walk Up.png')";
+        }
+
+    }
+
+    if(playerX + dx > window.innerWidth || playerX + dx < 0){
+        dx = 0
+    }
+
+    if(playerY + dy > window.innerHeight || playerY + dy < 0){
+        dy = 0
+    }
+
     
     playerX += dx;
     playerY += dy;
@@ -45,7 +76,7 @@ function gameloop(){
         const box = document.createElement('div');
         box.id = 'collisionBox';
         box.innerHTML = collidingProject.title + ": " + collidingProject.description;
-        box.style.cssText = `position: absolute; left: ${playerObj.left}px; top: ${playerObj.top - 50}px; background: red; color: white; padding: 10px; border: 2px solid black; z-index: 1000;`;
+        box.style.cssText = `position: absolute; left: ${playerObj.left}px; top: ${playerObj.top - 50}px; background: white; color: black; padding: 10px; border: 2px solid black; z-index: 1000; text-wrap: wrap; width: 150px`;
         document.body.appendChild(box);
     }
 
@@ -72,11 +103,13 @@ document.addEventListener('keyup', handleKeyRelease)
 
 function collidingWithPlayer(gameObject){
     let object = {
-        top: gameObject.y,
-        left: gameObject.x,
+        top: gameObject.y * window.innerHeight ,
+        left: gameObject.x * window.innerWidth,
         width: gameObject.width,
         height: gameObject.height
     }
+
+    
     let playerObj = playerDiv.getBoundingClientRect();
     return isColliding(playerObj, object)
 }
@@ -87,8 +120,8 @@ function createProject(project){
     div.style.position = 'absolute';
     div.style.width = `${project.width}px`;
     div.style.height = `${project.height}px`;
-    div.style.top = `${project.y}px`;
-    div.style.left = `${project.x}px`;
+    div.style.top = `${project.y * window.innerHeight}px`;
+    div.style.left = `${project.x * window.innerWidth}px`;
     
     const img = document.createElement('img');
     img.src = project.image;
