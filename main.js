@@ -11,28 +11,32 @@ let gameObjects = [];
 let playerDiv;
 
 function initiate(){
-    //create the div's for each game object and position the player in the starting point
+    console.log('initiate called')
     projects.forEach(createProject)
-   
-    console.log(gameObjects)
-
+    console.log('projects created')
     playerDiv = document.getElementById('player')
+    console.log('playerDiv:', playerDiv)
     playerDiv.style.backgroundImage = "url('assets/Player/Walk Down.png')";
     playerDiv.style.backgroundSize = '50px 70px'
-
+    console.log('about to add menu listener')
     
-
-
+    menuButton.addEventListener('click', () => {
+    // 1. Toggle the open class like normal
+    menuDropdown.classList.toggle('open');
     
-    
-
+    // 2. FORCE REFLOW: If the menu is now open, read a layout property.
+    // Simply reading 'offsetWidth' forces Firefox to completely re-evaluate 
+    // and correct the box geometry on the spot.
+    if (menuDropdown.classList.contains('open')) {
+        let forceFirefoxRecalc = menuDropdown.offsetWidth; 
+    }
+});
 }
 
 //
 function gameloop(){
     let [dx, dy] = movePlayer(keymap)
 
-    
     if (Math.abs(dx) > Math.abs(dy)){
         if (dx > 0){
             playerDiv.style.backgroundImage = "url('assets/Player/Walk Right.png')";
@@ -95,11 +99,7 @@ function gameloop(){
     requestAnimationFrame(gameloop);
 }
 
-//calling functions
-initiate()
-gameloop()
-document.addEventListener('keydown', handleKeyPress)
-document.addEventListener('keyup', handleKeyRelease)
+
 
 function collidingWithPlayer(gameObject){
     let object = {
@@ -109,7 +109,6 @@ function collidingWithPlayer(gameObject){
         height: gameObject.height
     }
 
-    
     let playerObj = playerDiv.getBoundingClientRect();
     return isColliding(playerObj, object)
 }
@@ -122,16 +121,16 @@ function createProject(project){
     div.style.height = `${project.height}px`;
     div.style.top = `${project.y * window.innerHeight}px`;
     div.style.left = `${project.x * window.innerWidth}px`;
+    div.style.zIndex = '1';
     
     const img = document.createElement('img');
     img.src = project.image;
     img.style.width = '100%';
     img.style.height = '100%';
     
-    
     div.appendChild(img);
-    document.body.appendChild(div);
-}
+    document.getElementById('background').appendChild(div);
+} 
 
 function handleKeyPress (event){
     const key = event.key;
@@ -145,4 +144,10 @@ function handleKeyRelease (event){
     const key = event.key;
     keymap[key] = false
 }
+
+//calling functions
+initiate()
+gameloop()
+document.addEventListener('keydown', handleKeyPress)
+document.addEventListener('keyup', handleKeyRelease)
 
