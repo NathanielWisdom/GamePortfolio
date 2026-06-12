@@ -14,23 +14,22 @@ function initiate(){
     console.log('initiate called')
     projects.forEach(createProject)
     console.log('projects created')
+    
     playerDiv = document.getElementById('player')
     console.log('playerDiv:', playerDiv)
     playerDiv.style.backgroundImage = "url('assets/Player/Walk Down.png')";
     playerDiv.style.backgroundSize = '50px 70px'
     console.log('about to add menu listener')
     
-    menuButton.addEventListener('click', () => {
-    // 1. Toggle the open class like normal
-    menuDropdown.classList.toggle('open');
+    // 1. Explicitly grab the elements from the DOM so Vercel can find them
+    const menuButton = document.getElementById('menu-btn');
+    const menuDropdown = document.getElementById('menu-dropdown');
     
-    // 2. FORCE REFLOW: If the menu is now open, read a layout property.
-    // Simply reading 'offsetWidth' forces Firefox to completely re-evaluate 
-    // and correct the box geometry on the spot.
-    if (menuDropdown.classList.contains('open')) {
-        let forceFirefoxRecalc = menuDropdown.offsetWidth; 
-    }
-});
+    // 2. Now the listener will bind properly without throwing a ReferenceError
+    menuButton.addEventListener('click', () => {
+        // Toggle the open class
+        menuDropdown.classList.toggle('open');
+    });
 }
 
 //
@@ -81,7 +80,7 @@ function gameloop(){
         box.id = 'collisionBox';
         box.innerHTML = collidingProject.title + ": " + collidingProject.description;
         box.style.cssText = `position: absolute; left: ${playerObj.left}px; top: ${playerObj.top - 50}px; background: white; color: black; padding: 10px; border: 2px solid black; z-index: 1000; text-wrap: wrap; width: 150px`;
-        document.body.appendChild(box);
+        document.getElementById('background').appendChild(box);
     }
 
     // Open a project link  

@@ -1,8 +1,8 @@
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* overflow: hidden; */
     font-family: fantasy, 'Courier New', Courier, monospace;
 }
 
@@ -58,36 +58,34 @@
 }
 
 #menu-dropdown {
-    
     position: fixed;  
     top: 46px;
     left: 12px;
-    /* 1. Remove the hardcoded 280px width */
-    width: max-content; 
-    
-    /* 3. Optional: Give it a maximum threshold so it doesn't run off the screen on small displays */
-    /* max-width: 450px; */
-
+    width: 300px; 
+    /* box-sizing: border-box; */
     background: #000;
     border: 2px solid #888;
     z-index: 9998;
     border-radius: 4px;
-    visibility: hidden;  /* Keeps it physically invisible */
+    visibility: hidden;  
     opacity: 0;
     pointer-events: none; 
+    overflow-x: hidden;
 }
 
 #menu-dropdown.open {
-   
-    visibility: visible;   /* Makes it physically present */
-    opacity: 1;           /* Makes it fully solid */
-    pointer-events: all;   /* Allows links to be clickable */
-    overflow: visible;
+    visibility: visible;   
+    opacity: 1;           
+    pointer-events: all;   
 }
 
 .dropdown-section {
     padding: 10px 14px;
     border-bottom: 1px solid #333;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
 }
 
 .dropdown-section:last-child {
@@ -100,6 +98,7 @@
     text-transform: uppercase;
     letter-spacing: 1px;
     margin-bottom: 6px;
+    white-space: normal;
 }
 
 .char-row {
@@ -107,6 +106,7 @@
     align-items: center;
     gap: 10px;
     margin-bottom: 8px;
+    width: 100%;
 }
 
 .char-portrait {
@@ -116,23 +116,17 @@
     flex-shrink: 0;
 }
 
-.char-name {
-    color: white;
-    font-size: 13px;
-    min-width: max-content;
-}
-
-.char-sub {
-    color: #aaa;
-    font-size: 11px;
-    min-width: max-content;
+.char-name, .char-sub {
+    white-space: normal;
+    word-break: break-word;
 }
 
 .links-row {
     display: flex;
     gap: 6px;
     margin-top: 6px;
-    min-width: max-content;
+    flex-wrap: wrap;
+    width: 100%;
 }
 
 .links-row a {
@@ -149,19 +143,15 @@
     background: #45a049;
 }
 
-.skills-text {
+.skills-text, .mission-text {
     color: #ccc;
     font-size: 11px;
     line-height: 1.5;
-    /* ADD THIS LINE */
-    width: max-content;
-}
-
-.mission-text {
-    color: #aaa;
-    font-size: 11px;
-    line-height: 1.5;
-    font-style: italic;
-    /* ADD THIS LINE */
-    width: max-content; 
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    white-space: normal; 
+    word-break: break-all;
+    overflow-wrap: anywhere;
 }
