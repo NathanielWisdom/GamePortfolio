@@ -29,7 +29,7 @@
 #header {
     position: absolute;
     height: 10%;
-    width: 30%;
+    width: fit-content;
     background-color: rgb(219, 201, 201);
     top: 1%;
     left: 50%;
