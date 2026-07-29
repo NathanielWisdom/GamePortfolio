@@ -25,7 +25,7 @@ export const projects = [
         id: 'laundry-app',
         title: 'Pomona Laundry App',
         description: 'Centralized laundry intelligence app for Pomona College laundry',
-        link: 'https://github.com/bgizaw/laundry-app-react-native',
+        link: 'https://pomonalaundry.vercel.app/',
         image: 'assets/StatueImg.png',
         x: 0.80,  
         y: 0.81,  
