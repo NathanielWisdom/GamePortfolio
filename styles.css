@@ -114,6 +114,7 @@
     width: 40px;
     height: 40px;
     border: 1px solid #555;
+    color: #fff;
     flex-shrink: 0;
 }
 
