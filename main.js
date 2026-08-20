@@ -128,6 +128,12 @@ function createProject(project){
     img.style.height = '100%';
     
     div.appendChild(img);
+
+    const name = document.createElement('div');
+    name.className = 'project-name';
+    name.textContent = project.title;
+    div.appendChild(name);
+
     document.getElementById('background').appendChild(div);
 } 
 
