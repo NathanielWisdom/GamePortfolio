@@ -44,9 +44,9 @@ export const projects = [
         height: 100
     },
      {
-        id: 'Margin',
-        title: 'margin',
-        description: 'Margin: A Web-App with an attached chrome extension returning a weekly digest of potential topics based on search history',
+        id: 'margin',
+        title: 'Margin',
+        description: 'A Web-App with an attached chrome extension returning a weekly digest of potential topics based on search history',
         link: 'https://browsemargin.netlify.app',
         image: 'assets/StatueImg.png',
         x: 0.1,   
