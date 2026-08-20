@@ -157,5 +157,5 @@
     box-sizing: border-box;
     white-space: normal; 
     word-break: break-all;
-    overflow-wrap: anywhere;
+    overflow-wrap: normal;
 }
